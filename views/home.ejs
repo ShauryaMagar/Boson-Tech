@@ -1,0 +1,27 @@
+<%-include("partials/header")-%>
+<div class="container-fluid" style="margin-top: 2rem;">
+    <div class="row justify-content-around">
+        <div class="col-md-5 col-sm-10">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <h1>Where are you heading to next?</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 col-sm-10">
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div style="text-align: center;"><h1>Search for your next destination!</h1></div>
+                    <form method="POST" action="/">
+                        <div class="input-group mb-3" style="margin-top: 2rem;">
+                            <input type="text" name="city" class="form-control" placeholder="Enter location" aria-label="Enter location" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Go!</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%-include("partials/footer")-%>
