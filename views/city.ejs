@@ -3,42 +3,81 @@
     <div class="row justify-content-center">
         <div class="col-10" style="text-align: center;">
             <h1><%=name%></h1>
-            <p><h3><%=country%></h3></p><hr>
-            <p><h3>Temperature: <%=temperature%></h3></p>
-            <p><h3>Transport: <%=transport%></h3></p>
+            <p><h3><%=country%></h3></p>
+        </div>
+    </div>
+
+    <hr>
+</div>
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-md-4 col-10">
+                <div class="card mb-4">
+                    <img src="images/sun.jpg" class="card-img-top" alt="..." style="height: 300px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Temperature</h5>
+                        <p class="card-text"><%=temperature%></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-10">
+                <div class="card mb-4">
+                    <img src="images/transport.jpg" class="card-img-top" alt="..." style="height: 300px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Tranport</h5>
+                        <p class="card-text"><%=transport%></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
-    <div class="row justify-content-center" style="text-align: center;">
+    <div class="container" style="text-align: center;">
         <h3>Let's talk about food!</h3>
     </div>
     <div class="row justify-content-around" style="margin-top: 1rem;">
         <%food.forEach(function(food){ %>
-            <div class="col-md-5 col-8" style="text-align: center;padding: 1rem;border: 2px solid black;border-radius: 5px;">
-                <img src="<%=food.foodImage%>" alt="image" style="width: 80%;margin-top: 1rem;height: 250px;border-radius: 10px;">
-                <p><h3><%=food.foodName%></h3></p>
-                <div style="text-align: start;">
-                    <p><h5><%=food.foodDesc%></h5></p>
+            <div class="col-md-4 col-8 " style="text-align: center;margin-top: 2rem;">
+                <div class="card mb-4">
+                    <img src="<%=food.foodImage%>" class="card-img-top" alt="..." style="height: 300px;">
+                    <div class="card-body">
+                        <h5 class="card-title"><%=food.foodName%></h5>
+                        <p class="card-text"><%=food.foodDesc%></p>
+                    </div>
                 </div>
             </div>
         <% }) %>
     </div>
     <hr>
-    <div class="row justify-content-center" style="text-align: center;margin-top: 3rem;">
+    <div class="container" style="text-align: center;margin-top: 3rem;">
         <h3>Exciting Places to visit!</h3>
     </div>
     <div class="row justify-content-around" style="margin-top: 1rem;">
         <%sites.forEach(function(site){ %>
-            <div class="col-md-5 col-8" style="text-align: center;padding: 1rem;border: 2px solid black;border-radius: 5px; margin-top: 2rem;">
-                <img src="<%=site.siteImage%>" alt="image" style="width: 80%;margin-top: 1rem;height: 250px;border-radius: 10px;">
-                <p><h3><%=site.siteName%></h3></p>
-                <div style="text-align: start;">
-                    <p><h5><%=site.siteFact%></h5></p>
+            <div class="col-md-5 col-8" style="text-align: center;margin-top: 2rem;">
+                <div class="row justify-content-center">
+                    <div class="col-md-10 col-10">
+                        <div class="card mb-4">
+                            <img src="<%=site.siteImage%>" class="card-img-top" alt="..." style="height: 300px;">
+                            <div class="card-body">
+                                <h5 class="card-title"><%=site.siteName%></h5>
+                                <p class="card-text"><%=site.siteFact%></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         <% }) %>
+    </div><hr>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-6" style="text-align: center;">
+                <h2>Download our amazing itinerary!</h2>
+                <a href="itinerary/<%=name%>.pdf" download><button class="btn btn-lg" style="background-color: #ff8ba7;">Download</button></a>
+            </div>
+        </div>
     </div>
-</div>
+
 
 
 <%-include("partials/footer")-%>

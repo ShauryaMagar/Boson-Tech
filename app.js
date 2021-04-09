@@ -17,6 +17,9 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 mongoose.connect("mongodb://localhost:27017/cityDB",{useNewUrlParser:true, useUnifiedTopology:true});
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 const citySchema = new mongoose.Schema({
   name: String,
@@ -106,9 +109,13 @@ const City = mongoose.model("City",citySchema);
 app.post("/",function(req,res){
   let loc=req.body.city;
   loc=loc.toLowerCase();
-  console.log(loc);
-  City.findOne({name:loc},function(err,city){
-    if(!err){
+  const regex = new RegExp(escapeRegex(loc), 'gi');
+  City.findOne({name:regex},function(err,city){
+    if(city===null||err){
+        console.log(err);
+        res.redirect("/");
+      } else {
+        
       res.render("city",{
         id:city.__id,
         name:city.name.toUpperCase(),
@@ -118,9 +125,6 @@ app.post("/",function(req,res){
         food:city.food,
         sites:city.sites
       })
-    }else{
-      console.log(err);
-      res.redirect("/");  
     }
   })
 });
